@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-OrgApplication<org>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "BankHorizon.org.OrgApplication",
+            "projectName": "org",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
