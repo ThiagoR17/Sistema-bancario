@@ -16,17 +16,13 @@ public class PessoaService {
     public PessoaService(PessoaRepository pessoaRepository){
         this.pessoaRepository = pessoaRepository;
     }
-
     public Pessoa criarPessoa(Pessoa pessoa) {
-        // Aqui você pode adicionar validações ou lógica de negócios, se necessário
-        // Por exemplo, verifique se a pessoa já existe antes de criar
         if (pessoaRepository.findByCpf(pessoa.getCpf()).isPresent()) {
             throw new PessoaExistenteException("A pessoa já existe.");
         }
 
-        // Salve a nova pessoa no banco de dados
+        
         return pessoaRepository.save(pessoa);
     }
 
-    // Outros métodos do serviço
-}
+}   

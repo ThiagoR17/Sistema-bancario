@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import BankHorizon.org.Exepction.ContaExistenteException;
-import BankHorizon.org.Exepction.ContaNaoEncontradaException;
+
 import BankHorizon.org.Exepction.SaldoInsuficienteException;
 import BankHorizon.org.model.Repository.ContaRepository;
 import BankHorizon.org.model.models.Conta;
@@ -54,17 +54,15 @@ public class ContaService {
         return contaOptional.map(Conta::getSaldo).orElse(null);
     }
     public Conta criarConta(Conta conta) {
-        // Verifique se a conta já existe com o mesmo número
         List<Conta> contasExistente = contaRepository.findByNumero(conta.getNumero());
         if (!contasExistente.isEmpty()) {
             throw new ContaExistenteException("Uma conta com o mesmo número já existe.");
         }
     
-        // Defina o saldo inicial (se desejar) e salve a nova conta
-        // Por exemplo, definindo um saldo inicial de 0.0:
+        
         conta.setSaldo(BigDecimal.ZERO);
     
-        // Certifique-se de salvar a nova conta no repositório
+       
         return contaRepository.save(conta);
     }
     
